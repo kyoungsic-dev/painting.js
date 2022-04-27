@@ -5,6 +5,7 @@ const colors = document.querySelectorAll('.controls__colors > button');
 const range = document.querySelector('.controls__range input');
 const mode = document.querySelector('.fill-btn');
 const save = document.querySelector('.save-btn');
+const clear = document.querySelector('.clear-btn');
 
 let painting = false;
 let filling = false;
@@ -17,6 +18,9 @@ ctx.strokeStyle = '#2c2c2c';
 ctx.lineWidth = 2.5;
 ctx.fillStyle = '#ffffff';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+ctx.font = '48px serif';
+ctx.fillText('Hellow World!', 10, 50);
 
 function onMouseMove(event) {
   const x = event.offsetX;
@@ -61,9 +65,13 @@ function saveImage(e) {
   const link = document.createElement('a');
 
   link.href = img;
-  link.download = 'PaintJS';
+  link.download = 'paint_js';
   link.click();
 }
+
+function clearCanvas(){
+  ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+};
 
 colors.forEach(ele => ele.addEventListener('click', changeColor));
 
@@ -79,9 +87,10 @@ mode.addEventListener('click', e => {
     filling = false;
     e.currentTarget.innerText = 'Fill';
   }
-})
+});
 
-save.addEventListener('click', saveImage)
+save.addEventListener('click', saveImage);
+clear.addEventListener('click', clearCanvas);
 
 canvas.addEventListener('mousemove', onMouseMove);
 canvas.addEventListener('mousedown', startPainting);

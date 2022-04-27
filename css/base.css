@@ -125,7 +125,6 @@ textarea {
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	overflow-scrolling: touch;
 	-webkit-overflow-scrolling: touch;
 	-moz-overflow-scrolling: touch;
 	-o-overflow-scrolling: touch;
